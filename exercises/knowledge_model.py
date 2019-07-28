@@ -14,4 +14,19 @@ class Knowledge(Base):
 	# topic of the article. The last column will be
 	# an integer, representing your rating of the article.
 
-	pass
+	__tablename__ = 'interests'
+	entry_id = Column(Integer, primary_key=True)
+	topic = Column(String)
+	title = Column(String)
+	rating = Column(Integer)
+
+	def __repr__(self):
+		if_good = ("If you want to learn about {}\n"
+				", you should look at the Wikipedia article called {}\n"
+				". We gave this article a rating of {}\n out of 10!").format(self.topic, self.title, self.rating)
+		if self.rating < 7:
+			return if_good, "Unfortately, this article does not have a better rating. Maybe this is an article that should be replaced soon!"
+		return if_good
+
+
+
