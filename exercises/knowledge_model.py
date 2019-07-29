@@ -21,12 +21,11 @@ class Knowledge(Base):
 	rating = Column(Integer)
 
 	def __repr__(self):
-		if_good = ("If you want to learn about {}\n"
-				", you should look at the Wikipedia article called {}\n"
-				". We gave this article a rating of {}\n out of 10!").format(self.topic, self.title, self.rating)
+		if_good = ("If you want to learn about {}, you should look at the Wikipedia article called {}. We gave this article a rating of {} out of 10!").format(
+				self.topic,
+				self.title,
+				self.rating)
 		if self.rating < 7:
-			return if_good, "Unfortately, this article does not have a better rating. Maybe this is an article that should be replaced soon!"
+			return if_good+ " Unfortately, this article does not have a better rating. Maybe this is an article that should be replaced soon!"
 		return if_good
-
-
 
